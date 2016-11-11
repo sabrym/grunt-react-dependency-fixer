@@ -1,6 +1,7 @@
 'use strict';
 
 var grunt = require('grunt');
+var _ = require('lodash');
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -22,27 +23,34 @@ var grunt = require('grunt');
     test.ifError(value)
 */
 
-exports.react_dependency_fixer = {
-  setUp: function(done) {
-    // setup here if necessary
-    done();
-  },
-  default_options: function(test) {
-    test.expect(1);
+exports.require_dependency_fixer = {
+    setUp: function(done) {
+        // setup here if necessary
+        done();
+    },
+    function(test) {
+        var resultantPair = [];
 
-    var actual = grunt.file.read('tmp/default_options');
-    var expected = grunt.file.read('test/expected/default_options');
-    test.equal(actual, expected, 'should describe what the default behavior is.');
+        grunt.file.recurse('test/fixtures', function(abspath, rootdir, subdir, filename) {
+            var pair = {
+                fileName: filename,
+                content: grunt.file.read(abspath)
+            };
 
-    test.done();
-  },
-  custom_options: function(test) {
-    test.expect(1);
+            resultantPair.push(pair);
+        });
 
-    var actual = grunt.file.read('tmp/custom_options');
-    var expected = grunt.file.read('test/expected/custom_options');
-    test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
+        test.expect(resultantPair.length);
 
-    test.done();
-  },
+        grunt.file.recurse('test/expected', function(abspath, rootdir, subdir, filename) {
+            var fromFixture = _.find(resultantPair, function(item) {
+                return item.fileName === filename;
+            });
+
+            var isEq = _.isEqual(fromFixture.content, grunt.file.read(abspath));
+            test.ok(isEq, 'Equal');
+        });
+
+        test.done();
+    }
 };
