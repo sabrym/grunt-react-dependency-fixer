@@ -28,7 +28,7 @@ grunt.initConfig({
     options: {
       // Task-specific options go here.
     },
-    your_target: {
+    criteria: {
       // Target-specific file lists and/or options go here.
     },
   },
@@ -37,17 +37,6 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
-Type: `String`
-Default value: `',  '`
-
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
 
 ### Usage Examples
 
@@ -56,29 +45,16 @@ In this example, the default options are used to do something with whatever. So 
 
 ```js
 grunt.initConfig({
-  requirejs_dependency_fixer: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  requirejs_dependency_fixer: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
+   requirejs_dependency_fixer: {
+            options: {
+                'requireDependencies': ['Core/util', 'Core/Config']
+            },
+            criteria: {
+                files: {
+                    'tmp': ['test/fixtures/*.js']
+                }
+            }
+        }
 });
 ```
 

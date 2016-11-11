@@ -33,7 +33,7 @@ module.exports = function(grunt) {
             options: {
                 'requireDependencies': ['Core/util', 'Core/Config']
             },
-            default: {
+            criteria: {
                 files: {
                     'tmp': ['test/fixtures/*.js']
                 }
