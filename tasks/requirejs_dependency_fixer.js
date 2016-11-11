@@ -1,6 +1,6 @@
 /*
- * grunt-react-dependency-fixer
- * https://github.com/sabrym/grunt-react-dependency-fixer
+ * grunt-requirejs-dependency-fixer
+ * https://github.com/sabrym/grunt-requirejs-dependency-fixer
  *
  * Copyright (c) 2016 sabrym
  * Licensed under the MIT license.
@@ -13,7 +13,7 @@ module.exports = function(grunt) {
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
 
-  grunt.registerMultiTask('react_dependency_fixer', 'This is a plugin that checks for requireJs dependencies in javascript files and updates them if their case does not match the defined', function() {
+  grunt.registerMultiTask('requirejs_dependency_fixer', 'This is a plugin that checks for requireJs dependencies in javascript files and updates them if their case does not match the defined', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       punctuation: '.',
