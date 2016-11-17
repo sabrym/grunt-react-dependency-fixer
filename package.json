@@ -1,8 +1,8 @@
 {
     "name": "grunt-require-dependency-fixer",
     "description": "This is a plugin that checks for requireJs dependencies in javascript files and updates them if their case does not match the defined",
-    "version": "0.1.0",
-    "homepage": "https://github.com/sabrym/grunt-require-dependency-fixer",
+    "version": "0.1.1",
+    "homepage": "https://github.com/sabrym/grunt-requirejs-dependency-fixer",
     "author": {
         "name": "sabrym",
         "email": "sabry.moulana@gmail.com",
